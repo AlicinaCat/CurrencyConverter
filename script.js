@@ -1,38 +1,24 @@
-function Currency() {
-    y = document.getElementById("converter").value;
-    return y;
+function currency() {
+    var endCur = document.querySelector('#end-currency');
+    var startCur = document.querySelector('#start-currency');
+    var startValue = document.querySelector('#start-value');
+    console.log(endCur.value);
+    console.log(startCur.value);
+    console.log('textbox value: '+ startValue.value)
+
+    var result = calculate(endCur.value, startCur.value, startValue.value);
+    console.log('result is: ' + result);
+
+    var endValue = document.querySelector('#end-value');
+    endValue.value = result;
 }
 
-function Calculate() {
-    y = Currency();
 
-    x = document.getElementById("value1").value;
 
-    if (x == "") {
-        document.getElementById("value2").value = "";
-    } else {
-        switch (y) {
-            case "Dollar":
-                document.getElementById("value2").value = x * 51.89;
-                break;
+function calculate(a, b, c) {
+    var result = a * b * c;
 
-            case "Pound":
-                document.getElementById("value2").value = x * 72.39;
-                break;
-
-            case "Euro":
-                document.getElementById("value2").value = x * 63.84;
-                break;
-
-            case "Yen":
-                document.getElementById("value2").value = x * 0.49;
-                break;
-
-            case "Yuan":
-                document.getElementById("value2").value = x * 8.20;
-                break;
-        }
-    }
+    return result;
 }
 
 
@@ -40,7 +26,6 @@ api.data();
 
 var ratesList = sessionStorage.getItem("rates");
 var rates = JSON.parse(ratesList);
-
 console.log(rates);
 
 populateLists(rates);
