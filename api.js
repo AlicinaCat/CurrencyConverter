@@ -8,11 +8,9 @@ var api = (function () {
         fetch('https://api.exchangeratesapi.io/latest')
         .then(res => res.json())
         .then(function (response) {
-            console.log(response.rates);
+            console.log(response);
             
             sessionStorage.setItem("rates", JSON.stringify(response.rates));
-            
-            
         });
     }
 
@@ -23,6 +21,3 @@ var api = (function () {
 
 
 
-api.data();
-var rates = sessionStorage.getItem("rates");
-console.log(rates);

@@ -34,3 +34,39 @@ function Calculate() {
         }
     }
 }
+
+
+api.data();
+
+var ratesList = sessionStorage.getItem("rates");
+var rates = JSON.parse(ratesList);
+
+console.log(rates);
+
+populateLists(rates);
+
+function populateLists(rates) {
+    let startCurList = document.querySelector('#start-currency');
+    let endCurList = document.querySelector('#end-currency');
+
+    for (let item of Object.entries(rates)) {
+        console.log(item[1]);
+
+        let newSelectItem = document.createElement('option');
+        newSelectItem.innerHTML = item[0];
+        newSelectItem.value = item[1];
+
+        startCurList.appendChild(newSelectItem);
+    }
+
+    for (let item of Object.entries(rates)) {
+        console.log(item[1]);
+
+        let newSelectItem = document.createElement('option');
+        newSelectItem.innerHTML = item[0];
+        newSelectItem.value = item[1];
+
+        endCurList.appendChild(newSelectItem);
+    }
+
+}
