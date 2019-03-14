@@ -8,34 +8,34 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
+    <div class="container">
+        <div class="jumbotron">
+   
+                <h1 class="display-4 text-center">Currency Converter</h1>
+
         </div>
-    </nav>
-    <div class="col-md-3"></div>
-    <div class="col-md-6 well">
-        <h3 class="text-primary">Title</h3>
-        <hr style="border-top:1px dotted #ccc;">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <h4>Converter</h4>
+        
+        <div class="text-center">
+            <h4>Please pick start and end currency:</h4>
             <hr style="border-top:1px groovy #ccc;" />
             <div class="form-group">
-                <select onchange="converter.convert()" class="form-control" id="start-currency" style="width:30%;">
-                </select>
-                <select onchange="converter.calculate()" class="form-control" id="end-currency" style="width:30%;">
-                </select>
-                <br />
-                <label id="label-end-currency">Amount</label>
-                <input type="number" value="0" oninput="converter.calculate()" class="form-control" id="start-value" />
             </div>
+                <select onchange="converter.convert()" class="form" id="start-currency" style="width:30%;">
+                </select> to
+                <select onchange="converter.calculate()" class="form" id="end-currency" style="width:30%;">
+                </select>
+                <br /><br/>
+
+                <label id="label-end-currency">Amount to exchange:</label>
+                <input type="number" value="0" oninput="converter.calculate()" class="form-control" id="start-value" />
+          
             <br /><br />
             <div class="form-group">
-                <label id="label-end-currency">Result</label>
+                <h4 id="label-end-currency">Exchanged amount:</h4>
                 <input type="number" class="form-control" id="end-value" disabled="disabled" />
             </div>
         </div>

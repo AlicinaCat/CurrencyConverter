@@ -12,7 +12,7 @@ var converter = (function () {
         sessionStorage.setItem("timestamp", currentTime);
     }
 
-    // Check if the api data is older than one hour
+    // Checks if the api data is older than one hour
 
     function checkExpiration() {
         var hours = 1;

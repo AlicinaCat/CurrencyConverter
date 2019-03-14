@@ -1,0 +1,18 @@
+body {
+    background-color: black;
+    background-image: url('international.jpg');
+}
+
+.container {
+    width: 50%;
+    background-color: white;
+    padding: 5px;
+    border: lightblue solid 5px;
+    margin-top: 100px;
+}
+
+.jumbotron {
+    background-color: lightblue;
+    padding: 0;
+    color: white;
+}
