@@ -25,15 +25,15 @@
             <h4>Converter</h4>
             <hr style="border-top:1px groovy #ccc;" />
             <div class="form-group">
-                <select onchange="currency(); calculate()" class="form-control" id="start-currency" style="width:30%;">
-                    <option value="1">EUR</option>
+                <select onchange="update(); currency(); calculate()" class="form-control" id="start-currency" style="width:30%;">
+                    <!-- <option value="1">EUR</option> -->
                 </select>
                 <select onchange="currency(); calculate()" class="form-control" id="end-currency" style="width:30%;">
-                    <option value="1">EUR</option>
+                    <!-- <option value="1">EUR</option> -->
                 </select>
                 <br />
                 <label id="label-end-currency">Start currency</label>
-                <input type="number" oninput="calculate()" class="form-control" id="start-value" />
+                <input type="number" oninput="currency(); calculate()" class="form-control" id="start-value" />
             </div>
             <br /><br />
             <div class="form-group">

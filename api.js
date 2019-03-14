@@ -1,16 +1,16 @@
 
 
 var api = (function () {
-    var test = 'blabla';
 
-    function fetchData() {
-
-        fetch('https://api.exchangeratesapi.io/latest')
+    function fetchData(base) {
+        var url = 'https://api.exchangeratesapi.io/latest?base=' + base;
+        fetch(url)
         .then(res => res.json())
         .then(function (response) {
-            console.log(response);
+            console.log(response.base);
             
             sessionStorage.setItem("rates", JSON.stringify(response.rates));
+            sessionStorage.setItem("base", JSON.stringify(response.base));
         });
     }
 
@@ -18,6 +18,3 @@ var api = (function () {
         data: fetchData
     }
 })();
-
-
-
