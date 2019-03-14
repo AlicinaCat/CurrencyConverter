@@ -1,6 +1,18 @@
+// Initiates app
+
+start();
+
+function start() {
+    api.data('EUR');
+    var ratesList = sessionStorage.getItem("rates");
+    var rates = JSON.parse(ratesList);
+    populateLists(rates);
+}
+
+// Retrieves the currency and input to work with
+
 function currency() {
     var endCur = document.querySelector('#end-currency');
-    // var startCur = document.querySelector('#start-currency');
     var startCur = 1;
     var startValue = document.querySelector('#start-value');
     console.log('end currency: ' + endCur.value);
@@ -14,42 +26,39 @@ function currency() {
     endValue.value = result;
 }
 
-
+// Calculates result
 
 function calculate(a, b, c) {
     var result = a * b * c;
 
     return result;
 }
+// Method called when the base currency is changed
 
-// Start
-start();
-
-function start() {
-    api.data('EUR');
-    var ratesList = sessionStorage.getItem("rates");
-    var base = sessionStorage.getItem("base");
-    // console.log(base);
-    var rates = JSON.parse(ratesList);
-    // console.log(rates);
-    populateLists(rates);
-}
-
-function update() {
+function changeCurrency() {
     var startCurrency = document.querySelector('#start-currency');
     var base = startCurrency.options[startCurrency.selectedIndex]
     console.log(base.text);
     api.data(base.text);
-    var ratesList = sessionStorage.getItem("rates");
-
-    // console.log(base);
-    var rates = JSON.parse(ratesList);
-    console.log(rates);
-    updateLists();
-    populateLists(rates);
 }
 
-function updateLists() {
+// Takes care of the changes that come from choosing different start currency
+
+function update() {
+
+    var ratesList = sessionStorage.getItem("rates");
+
+    var rates = JSON.parse(ratesList);
+    console.log(rates);
+    cleanLists();
+    populateLists(rates);
+
+    currency();
+}
+
+// Methods that handle the dropdown lists
+
+function cleanLists() {
     let startCurList = document.querySelector('#start-currency');
     let endCurList = document.querySelector('#end-currency');
     startCurList.options.length = 0;
@@ -67,7 +76,6 @@ function populateLists(rates) {
     startCurList.appendChild(baseItem);
 
     for (let item of Object.entries(rates)) {
-        // console.log(item[1]);
 
         let newSelectItem = document.createElement('option');
         newSelectItem.innerHTML = item[0];
@@ -77,7 +85,6 @@ function populateLists(rates) {
     }
 
     for (let item of Object.entries(rates)) {
-        // console.log(item[1]);
 
         let newSelectItem = document.createElement('option');
         newSelectItem.innerHTML = item[0];

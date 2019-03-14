@@ -1,4 +1,4 @@
-
+// Module responsible of fetching data 
 
 var api = (function () {
 
@@ -11,6 +11,7 @@ var api = (function () {
             
             sessionStorage.setItem("rates", JSON.stringify(response.rates));
             sessionStorage.setItem("base", JSON.stringify(response.base));
+            update();
         });
     }
 
