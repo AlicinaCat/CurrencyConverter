@@ -5,11 +5,32 @@ var converter = (function () {
         var ratesList = sessionStorage.getItem("rates");
         var rates = JSON.parse(ratesList);
         populateLists(rates);
+
+        var d = new Date();
+        let currentTime = d.getTime();
+        console.log(currentTime);
+        sessionStorage.setItem("timestamp", currentTime);
+    }
+
+    // Check if the api data is older than one hour
+
+    function checkExpiration() {
+        var hours = 1;
+        let timestamp = sessionStorage.getItem("timestamp");
+        var d = new Date();
+        let currentTime = d.getTime();
+
+        if(currentTime-timestamp > hours*60*60*1000) {
+            localStorage.clear()
+            start();
+        }
     }
 
     // Retrieves the currency and input to work with
 
     function currency() {
+        checkExpiration();
+
         var endCur = document.querySelector('#end-currency');
         var startCur = 1;
         var startValue = document.querySelector('#start-value');
@@ -34,6 +55,8 @@ var converter = (function () {
     // Method called when the base currency is changed
 
     function changeCurrency() {
+        checkExpiration();
+
         var startCurrency = document.querySelector('#start-currency');
         var base = startCurrency.options[startCurrency.selectedIndex]
         console.log(base.text);
@@ -43,6 +66,7 @@ var converter = (function () {
     // Takes care of the changes that come from choosing different start currency
 
     function update() {
+        checkExpiration();
 
         var ratesList = sessionStorage.getItem("rates");
 
